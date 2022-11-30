@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
+  final VoidCallback resetQuizHandler;
   final int resultScore;
 
   const Result({
     super.key,
     required this.resultScore,
+    required this.resetQuizHandler,
   });
 
   String get resultPhrase {
@@ -24,15 +26,23 @@ class Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        resultPhrase,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
+    return Column(
+      children: [
+        Center(
+          child: Text(
+            resultPhrase,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 36,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
-      ),
+        ElevatedButton(
+          onPressed: resetQuizHandler,
+          child: const Text('Retry Quiz'),
+        )
+      ],
     );
   }
 }

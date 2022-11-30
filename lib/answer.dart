@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
-  final VoidCallback selectHandler;
+  final VoidCallback answerQuestionHandler;
   final String answerText;
 
-  const Answer(
-      {super.key, required this.selectHandler, required this.answerText});
+  const Answer({
+    super.key,
+    required this.answerQuestionHandler,
+    required this.answerText,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: selectHandler,
+        onPressed: answerQuestionHandler,
         child: Text(answerText),
       ),
     );
