@@ -19,34 +19,37 @@ class _MyAppState extends State<MyApp> {
     {
       'questionText': 'What\'s your favorite color?',
       'answers': [
-        'Black',
-        'Red',
-        'Green',
-        'White',
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 1},
+        {'text': 'Green', 'score': 5},
+        {'text': 'White', 'score': 3},
       ]
     },
     {
       'questionText': 'What\'s your favorite animal?',
       'answers': [
-        'Rabbit',
-        'Snake',
-        'Turtle',
-        'Lion',
+        {'text': 'Rabbit', 'score': 7},
+        {'text': 'Snake', 'score': 10},
+        {'text': 'Turtle', 'score': 1},
+        {'text': 'Lion', 'score': 4},
       ]
     },
     {
       'questionText': 'Who\'s your favorite instructor?',
       'answers': [
-        'Max',
-        'Maxxx',
-        'MAX',
-        'max...',
+        {'text': 'Max', 'score': 10},
+        {'text': 'Maxxx', 'score': 1},
+        {'text': 'MAXX', 'score': 6},
+        {'text': 'Maxmimliian', 'score': 2},
       ]
     },
   ];
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
+
     setState(() {
       _questionIndex += 1;
     });
@@ -69,7 +72,7 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
                 selectHandler: _answerQuestion,
                 questionIndex: _questionIndex)
-            : const Result(),
+            : Result(resultScore: _totalScore),
       ),
     );
   }
